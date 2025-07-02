@@ -40,15 +40,16 @@ body {
 
 .main-content {
     flex-grow: 1;
-    padding: 30px;
-    background-color: #fafafa;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    padding: 2rem;
 }
 
 .header h1 {
