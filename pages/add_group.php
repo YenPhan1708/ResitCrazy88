@@ -1,14 +1,4 @@
 <?php
-include '../scripts/renderRanking.php';
-
-$teamScores = [
-    ['team' => 'Team Delta', 'score' => 1950],
-    ['team' => 'Team Alpha', 'score' => 1500],
-    ['team' => 'Team Beta', 'score' => 1200],
-    ['team' => 'Team Gamma', 'score' => 800],
-    ['team' => 'Team Omega', 'score' => 700],
-];
-
 // Load group list from JSON
 $groupJson = file_get_contents('../json/groups.json');
 $groupList = json_decode($groupJson, true);
@@ -41,7 +31,7 @@ $groupList = json_decode($groupJson, true);
         <div class="content_container">
                 <div class="content">
                     <div class="form-wrapper">
-                        <form class="group-form" method="post" action="submit_group.php">
+                        <form class="group-form" method="post" action="../scripts/submit_group.php">
                             <label for="group">Choose a group:</label>
                             <select name="group" id="group" required>
                                 <option value="">-- Select a Group --</option>
