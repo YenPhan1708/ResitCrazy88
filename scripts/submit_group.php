@@ -1,47 +1,36 @@
 <?php
-$dataFile = '../json/data.json';
+session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $selectedGroup = $_POST['group'] ?? '';
+$group = $_POST['group'] ?? null;
 
-    if ($selectedGroup === '') {
-        die('No group selected.');
-    }
-
-    // Read current JSON data
-    $data = [];
-    if (file_exists($dataFile)) {
-        $json = file_get_contents($dataFile);
-        $data = json_decode($json, true);
-    }
-
-    // Prevent duplicate group entries
-    $groupExists = false;
-    if (isset($data['groups'])) {
-        foreach ($data['groups'] as $group) {
-            if ($group['name'] === $selectedGroup) {
-                $groupExists = true;
-                break;
-            }
-        }
-    } else {
-        $data['groups'] = [];
-    }
-
-    // If group doesn't exist, add it
-    if (!$groupExists) {
-        $data['groups'][] = [
-            'name' => $selectedGroup,
-            'members' => [],
-            'tasksCompleted' => []
-        ];
-    }
-
-    // Save back to JSON
-    file_put_contents($dataFile, json_encode($data, JSON_PRETTY_PRINT));
-
-    // Redirect or confirmation
-    header('Location: ../pages/add_group.php?success=1');
-    exit;
+if (!$group) {
+    die("No group selected.");
 }
-?>
+
+// Load current data
+$dataPath = '../json/data.json';
+$data = json_decode(file_get_contents($dataPath), true);
+
+// Check if group already exists, if not add it
+$groupExists = false;
+foreach ($data['groups'] as $existingGroup) {
+    if ($existingGroup['name'] === $group) {
+        $groupExists = true;
+        break;
+    }
+}
+
+if (!$groupExists) {
+    $data['groups'][] = [
+        'name' => $group,
+        'members' => [],
+        'tasksCompleted' => []
+    ];
+    file_put_contents($dataPath, json_encode($data, JSON_PRETTY_PRINT));
+}
+
+// ✅ Store group in session for later pages
+$_SESSION['selected_group'] = $group;
+
+header('Location: ../pages/add_group.php');
+exit;

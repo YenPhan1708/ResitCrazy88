@@ -4,6 +4,19 @@
             "name": "Group 2",
             "members": [],
             "tasksCompleted": []
+        },
+        {
+            "name": "Group 1",
+            "members": [],
+            "tasksCompleted": []
+        },
+        {
+            "name": "Group 4",
+            "members": [
+                "Student K",
+                "Student L"
+            ],
+            "tasksCompleted": []
         }
     ]
 }
