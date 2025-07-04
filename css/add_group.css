@@ -18,11 +18,12 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
     box-sizing: border-box;
 }
-        .form-wrapper {
-            width: 100%;
-        }
+        
+.form-wrapper {
+    width: 100%;
+}
 
-        .group-form {
+.group-form {
             display: flex;
             flex-direction: column;
             gap: 1rem;
@@ -57,6 +58,7 @@
             display: flex;
             justify-content: flex-end;
             margin-top: 1rem;
+            width: 100%;
         }
 
         .next-button {
@@ -65,3 +67,8 @@
             text-align: center;
             text-decoration: none;
         }
+        
+        .submit_button{
+            width: 100%;
+        }
+

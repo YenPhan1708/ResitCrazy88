@@ -13,10 +13,11 @@
         {
             "name": "Group 4",
             "members": [
-                "Student K",
                 "Student L"
             ],
-            "tasksCompleted": []
+            "tasksCompleted": [
+                "Task 9"
+            ]
         }
     ]
 }

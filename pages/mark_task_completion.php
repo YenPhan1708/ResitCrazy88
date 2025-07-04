@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $group = $_SESSION['selected_group'] ?? null;
 
 if (!$group) {
@@ -8,23 +7,29 @@ if (!$group) {
     exit;
 }
 
-// Load group members
-$membersJson = file_get_contents('../json/group_members.json');
-$groupMembers = json_decode($membersJson, true);
+// Load group tasks
+$tasksJson = file_get_contents('../json/group_tasks.json');
+$groupTasks = json_decode($tasksJson, true);
+$tasks = $groupTasks[$group] ?? [];
 
-// Load main data file
+// Load existing data to check already completed tasks
 $dataJson = file_get_contents('../json/data.json');
 $data = json_decode($dataJson, true);
 
-// Get members for this group
-$members = $groupMembers[$group] ?? [];
+$completed = [];
+foreach ($data['groups'] as $entry) {
+    if ($entry['name'] === $group) {
+        $completed = $entry['tasksCompleted'] ?? [];
+        break;
+    }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Group Member</title>
+    <title>Mark Task Completion</title>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/add_group.css" />
 </head>
@@ -37,7 +42,7 @@ $members = $groupMembers[$group] ?? [];
 
     <main class="main-content">
         <header class="header">
-            <h1>Add Members to <?= htmlspecialchars($group) ?></h1>
+            <h1>Mark Tasks for <?= htmlspecialchars($group) ?></h1>
             <div class="admin-info">
                 <span>Kevin Penn</span>
                 <span class="role">Admin</span>
@@ -47,26 +52,24 @@ $members = $groupMembers[$group] ?? [];
         <div class="content_container">
             <div class="content">
                 <div class="form-wrapper">
-                    <form class="group-form" method="post" action="../scripts/save_members.php">
+                    <form method="post" action="../scripts/save_tasks.php">
                         <input type="hidden" name="group" value="<?= htmlspecialchars($group) ?>"/>
                         
-                        <?php if (empty($members)): ?>
-                            <p>No members found for <?= htmlspecialchars($group) ?>.</p>
+                        <?php if (empty($tasks)): ?>
+                            <p>No tasks found for <?= htmlspecialchars($group) ?>.</p>
                         <?php else: ?>
-                            <label>Select group members:</label><br/>
-                            <?php foreach ($members as $member): ?>
-                                <div>
-                                    <input type="checkbox" name="members[]" value="<?= htmlspecialchars($member) ?>" id="<?= htmlspecialchars($member) ?>">
-                                    <label class="task-label"  for="<?= htmlspecialchars($member) ?>"><?= htmlspecialchars($member) ?></label>
+                            <label>Select completed tasks:</label><br/>
+                            <?php foreach ($tasks as $task): ?>
+                                <div class="task-item">
+                                    <input type="checkbox" name="tasks[]" value="<?= htmlspecialchars($task) ?>" 
+                                           id="<?= htmlspecialchars($task) ?>"
+                                           <?= in_array($task, $completed) ? 'checked' : '' ?>>
+                                    <label class="task-label" for="<?= htmlspecialchars($task) ?>"><?= htmlspecialchars($task) ?></label>
                                 </div>
                             <?php endforeach; ?>
                         <?php endif; ?>
-                        
-                        <button type="submit">Submit</button>
+                        <button type="submit" class="submit_button">Submit</button>
                     </form>
-                </div>
-                <div class="button-container" style="margin-top: 1em;">
-                     <a href="mark_task_completion.php" class="finish-button next-button">Next →</a>
                 </div>
             </div>
         </div>
