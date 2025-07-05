@@ -4,13 +4,14 @@ $dataPath = '../json/data.json';
 $tasksPath = '../json/tasks.json';
 
 $data = json_decode(file_get_contents($dataPath), true);
-$tasks = json_decode(file_get_contents($tasksPath), true);
+$tasksData = json_decode(file_get_contents($tasksPath), true);
+$tasks = $tasksData['tasks'] ?? [];
 
 $group = $_POST['group'] ?? null;
-$taskId = $_POST['task_id'] ?? null;
+$taskId = isset($_POST['task_id']) ? (int) $_POST['task_id'] : null;
 
 // Validate input
-if ($group === null || $taskId === null) {
+if (!$group || !$taskId) {
     die("Missing group or task ID.");
 }
 
@@ -32,28 +33,16 @@ if (!isset($data['groups'][$groupIndex]['tasksCompleted'])) {
     $data['groups'][$groupIndex]['tasksCompleted'] = [];
 }
 
-// Convert string task ID to integer
-$taskIndex = (int)$taskId - 1;  // Convert to 0-based index
-
-// Check if it's a valid task ID
-if (!isset($tasks['tasks'][$taskIndex])) {
+// Validate and mark task as completed
+if (!array_key_exists($taskId - 1, $tasks)) {
     die("Invalid task ID.");
 }
 
-$taskKey = "Task " . $taskId;
-$completed = &$data['groups'][$groupIndex]['tasksCompleted'];
-
-// Toggle task completion
-if (in_array($taskKey, $completed)) {
-    // Unmark (remove)
-    $completed = array_values(array_filter($completed, fn($t) => $t !== $taskKey));
-} else {
-    // Mark as completed
-    $completed[] = $taskKey;
+if (!in_array($taskId, $data['groups'][$groupIndex]['tasksCompleted'])) {
+    $data['groups'][$groupIndex]['tasksCompleted'][] = $taskId;
+    file_put_contents($dataPath, json_encode($data, JSON_PRETTY_PRINT));
 }
 
-file_put_contents($dataPath, json_encode($data, JSON_PRETTY_PRINT));
-
-// Redirect back to checklist
-header('Location: ../pages/mark_task_completion.php?group=' . urlencode($group));
+// Redirect back to the checklist
+header('Location: ../pages/mark_task_completion.php');
 exit;
