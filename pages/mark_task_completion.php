@@ -1,25 +1,19 @@
 <?php
-session_start();
-$group = $_SESSION['selected_group'] ?? null;
+$dataPath = '../json/data.json';
+$tasksPath = '../json/tasks.json';
 
-if (!$group) {
-    echo "Group not specified.";
-    exit;
-}
+$data = json_decode(file_get_contents($dataPath), true);
+$tasksData = json_decode(file_get_contents($tasksPath), true);
 
-// Load group tasks
-$tasksJson = file_get_contents('../json/group_tasks.json');
-$groupTasks = json_decode($tasksJson, true);
-$tasks = $groupTasks[$group] ?? [];
+$tasks = $tasksData['tasks'] ?? [];
 
-// Load existing data to check already completed tasks
-$dataJson = file_get_contents('../json/data.json');
-$data = json_decode($dataJson, true);
+$selectedGroup = $_GET['group'] ?? '';
+$groupNames = array_column($data['groups'], 'name');
+$completedTasks = [];
 
-$completed = [];
-foreach ($data['groups'] as $entry) {
-    if ($entry['name'] === $group) {
-        $completed = $entry['tasksCompleted'] ?? [];
+foreach ($data['groups'] as $group) {
+    if ($group['name'] === $selectedGroup) {
+        $completedTasks = $group['tasksCompleted'] ?? [];
         break;
     }
 }
@@ -29,51 +23,59 @@ foreach ($data['groups'] as $entry) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mark Task Completion</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/add_group.css" />
+    <title>Task Checklist</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/task_list.css">
 </head>
 <body>
 <div class="container">
-    <aside class="sidebar">
-        <img src="../img/nhlStendenLogo.png" alt="NHL Stenden Logo" class="logo" />
-        <button class="finish-button">Leader Board</button>
-    </aside>
+    <div class="sidebar">
+        <img src="../img/nhlStendenLogo.png" alt="Logo" class="logo">
+        <button class="finish-button" onclick="window.location.href='leaderboard.php'">Finish Form</button>
+    </div>
 
-    <main class="main-content">
-        <header class="header">
-            <h1>Mark Tasks for <?= htmlspecialchars($group) ?></h1>
+    <div class="main-content">
+        <div class="header">
+            <h1>Task Checklist</h1>
             <div class="admin-info">
                 <span>Kevin Penn</span>
-                <span class="role">Admin</span>
-            </div>
-        </header>
-
-        <div class="content_container">
-            <div class="content">
-                <div class="form-wrapper">
-                    <form method="post" action="../scripts/save_tasks.php">
-                        <input type="hidden" name="group" value="<?= htmlspecialchars($group) ?>"/>
-                        
-                        <?php if (empty($tasks)): ?>
-                            <p>No tasks found for <?= htmlspecialchars($group) ?>.</p>
-                        <?php else: ?>
-                            <label>Select completed tasks:</label><br/>
-                            <?php foreach ($tasks as $task): ?>
-                                <div class="task-item">
-                                    <input type="checkbox" name="tasks[]" value="<?= htmlspecialchars($task) ?>" 
-                                           id="<?= htmlspecialchars($task) ?>"
-                                           <?= in_array($task, $completed) ? 'checked' : '' ?>>
-                                    <label class="task-label" for="<?= htmlspecialchars($task) ?>"><?= htmlspecialchars($task) ?></label>
-                                </div>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                        <button type="submit" class="submit_button">Submit</button>
-                    </form>
-                </div>
+                <span>Admin</span>
             </div>
         </div>
-    </main>
+
+        <div class="form-box">
+            <form method="GET" class="group-select-form">
+                <label for="group">Select Group</label>
+                <select name="group" id="group" onchange="this.form.submit()" required>
+                    <option value="" disabled <?= $selectedGroup === '' ? 'selected' : '' ?>>== Please Select Group ==</option>
+                    <?php foreach ($groupNames as $name): ?>
+                        <option value="<?= htmlspecialchars($name) ?>" <?= $selectedGroup === $name ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($name) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </form>
+
+            <?php if ($selectedGroup): ?>
+                <div class="task-list">
+                    <?php foreach ($tasks as $index => $task): ?>
+                        <?php
+                        $taskId = $index + 1; // 1-based ID
+                        $isCompleted = in_array($taskId, $completedTasks);
+                        $statusClass = $isCompleted ? 'completed' : 'not-completed';
+                        ?>
+                        <form method="POST" action="../scripts/mark_task.php">
+                            <input type="hidden" name="group" value="<?= htmlspecialchars($selectedGroup) ?>">
+                            <input type="hidden" name="task_id" value="<?= $taskId ?>">
+                            <button type="submit" class="task-button <?= $statusClass ?>">
+                                <?= htmlspecialchars($task['task_name']) ?> (<?= $task['points'] ?> pts)
+                            </button>
+                        </form>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
 </div>
 </body>
 </html>

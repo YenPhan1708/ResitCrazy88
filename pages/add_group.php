@@ -1,60 +1,39 @@
-<?php
-// Load group list from JSON
-$groupJson = file_get_contents('../json/groups.json');
-$groupList = json_decode($groupJson, true);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Add Group</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/add_group.css"/>
+    <meta charset="UTF-8">
+    <title>Add New Group</title>
+    <link rel="stylesheet" href="../css/style.css"> <!-- your shared layout styles -->
+    <link rel="stylesheet" href="../css/add_group.css"> <!-- additional form styles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div class="container">
-    <aside class="sidebar">
-        <img src="../img/nhlStendenLogo.png" alt="NHL Stenden Logo" class="logo"/>
-        <button class="finish-button">Leader Board</button>
-    </aside>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="../img/nhlStendenLogo.png" alt="NHL Stenden Logo" class="logo">
+        <button class="finish-button">Finish Form</button>
+    </div>
 
-    <main class="main-content">
-        <header class="header">
-            <h1>Add Group</h1>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <h1>Add New Group</h1>
             <div class="admin-info">
                 <span>Kevin Penn</span>
-                <span class="role">Admin</span>
+                <span>Admin</span>
             </div>
-        </header>
-        <div class="content_container">
-                <div class="content">
-                    <div class="form-wrapper">
-                        <form class="group-form" method="post" action="../scripts/submit_group.php">
-                            <label for="group">Choose a group:</label>
-                            <select name="group" id="group" required>
-                                <option value="">-- Select a Group --</option>
-                                <?php
-                                if (!empty($groupList['groups'])) {
-                                    foreach ($groupList['groups'] as $group) {
-                                        echo "<option value=\"" . htmlspecialchars($group) . "\">$group</option>";
-                                    }
-                                } else {
-                                    echo "<option disabled>No groups found</option>";
-                                }
-                                ?>
-                            </select>
-                            <button type="submit">Submit</button>
-                        </form>
-                    </div>
-                    <div class="button-container">
-                        <a href="add_group_member.php" class="finish-button next-button">Next →</a>
-                    </div>                
-                </div>
         </div>
 
-    </main>
+        <!-- Centered Form -->
+        <div class="center-wrapper">
+            <form action="../scripts/submit_group.php" method="POST" class="add-group-form">
+                <label for="group_name">Group Name</label>
+                <input type="text" name="group_name" id="group_name" required>
+                <button type="submit">Add Group</button>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -2,22 +2,80 @@
     "groups": [
         {
             "name": "Group 2",
-            "members": [],
-            "tasksCompleted": []
+            "members": [
+                "sdgfhj"
+            ],
+            "tasksCompleted": [
+                1,
+                2,
+                3,
+                4
+            ]
         },
         {
             "name": "Group 1",
-            "members": [],
-            "tasksCompleted": []
+            "members": [
+                "Student A",
+                "Student B",
+                "Student D",
+                "wrety5ui"
+            ],
+            "tasksCompleted": [
+                "Task 1",
+                "Task 2",
+                "Task 3",
+                0,
+                1
+            ]
         },
         {
             "name": "Group 4",
             "members": [
-                "Student L"
+                "Student L",
+                "wqw4yr",
+                "wqw4yredd",
+                "sfasf"
             ],
             "tasksCompleted": [
-                "Task 9"
+                "Task 9",
+                1
             ]
+        },
+        {
+            "name": "Group 3",
+            "members": [
+                "Student H",
+                "afasfdas"
+            ],
+            "tasksCompleted": [
+                "Task 7",
+                "Task 8",
+                1,
+                2
+            ]
+        },
+        {
+            "name": "frtrgyui",
+            "members": [
+                "fwefe",
+                "wrety5ui"
+            ],
+            "tasksCompleted": []
+        },
+        {
+            "name": "frtrgyuigh",
+            "members": [
+                "wqw4yr",
+                "fwefe",
+                "fwefeewrsw",
+                "sgswgsdgs"
+            ],
+            "tasksCompleted": []
+        },
+        {
+            "name": "dg",
+            "members": [],
+            "tasksCompleted": []
         }
     ]
 }
