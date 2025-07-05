@@ -1,0 +1,29 @@
+.task-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.task-form {
+    margin: 0;
+}
+
+.task-button {
+    padding: 10px;
+    width: 240px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.task-button.completed {
+    background-color: #b6b608;
+}
+
+.task-button.not-completed {
+    background-color: green;
+    color: white;
+}
