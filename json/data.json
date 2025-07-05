@@ -1,4 +1,18 @@
 {
     "groups": [
+        {
+            "name": "frtrgyui",
+            "members": [
+                "wrety5ui"
+            ],
+            "tasksCompleted": [
+                1,
+                2,
+                4,
+                6,
+                8
+            ],
+            "score": 57
+        }
     ]
 }

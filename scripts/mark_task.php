@@ -15,7 +15,7 @@ if (!$group || !$taskId) {
     die("Missing group or task ID.");
 }
 
-// Make sure group exists
+// Find the group index
 $groupIndex = null;
 foreach ($data['groups'] as $index => $g) {
     if ($g['name'] === $group) {
@@ -33,16 +33,26 @@ if (!isset($data['groups'][$groupIndex]['tasksCompleted'])) {
     $data['groups'][$groupIndex]['tasksCompleted'] = [];
 }
 
-// Validate and mark task as completed
-if (!array_key_exists($taskId - 1, $tasks)) {
-    die("Invalid task ID.");
-}
-
+// Mark task as completed if not already done
 if (!in_array($taskId, $data['groups'][$groupIndex]['tasksCompleted'])) {
     $data['groups'][$groupIndex]['tasksCompleted'][] = $taskId;
-    file_put_contents($dataPath, json_encode($data, JSON_PRETTY_PRINT));
 }
 
-// Redirect back to the checklist
-header('Location: ../pages/mark_task_completion.php');
+//Recalculate the group score
+$totalScore = 0;
+foreach ($data['groups'][$groupIndex]['tasksCompleted'] as $completedId) {
+    $taskIndex = $completedId - 1;
+    if (isset($tasks[$taskIndex])) {
+        $totalScore += $tasks[$taskIndex]['points'];
+    }
+}
+
+// ✅ Store the score in the group data
+$data['groups'][$groupIndex]['score'] = $totalScore;
+
+// Save back to file
+file_put_contents($dataPath, json_encode($data, JSON_PRETTY_PRINT));
+
+// Redirect to checklist page
+header('Location: ../pages/mark_task_completion.php?group=' . urlencode($group));
 exit;

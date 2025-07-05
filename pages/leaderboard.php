@@ -1,15 +1,7 @@
 <?php
-include '../scripts/renderRanking.php';
-
-$teamScores = [
-    ['team' => 'Team Delta', 'score' => 1950],
-    ['team' => 'Team Alpha', 'score' => 1500],
-    ['team' => 'Team Beta', 'score' => 1200],
-    ['team' => 'Team Gamma', 'score' => 800],
-    ['team' => 'Team Omega', 'score' => 700],
-];
+require_once '../scripts/renderRanking.php';
+$teamScores = getActualTeamScores('../json/data.json');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

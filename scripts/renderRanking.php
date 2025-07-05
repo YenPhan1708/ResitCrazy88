@@ -1,4 +1,28 @@
 <?php
+
+function getActualTeamScores(string $dataPath): array {
+    if (!file_exists($dataPath)) {
+        return [];
+    }
+
+    $json = file_get_contents($dataPath);
+    $data = json_decode($json, true);
+    $teams = [];
+
+    if (!isset($data['groups'])) {
+        return [];
+    }
+
+    foreach ($data['groups'] as $group) {
+        $teams[] = [
+            'team' => $group['name'] ?? 'Unnamed Team',
+            'score' => $group['score'] ?? 0
+        ];
+    }
+
+    return $teams;
+}
+
 function renderRanking(array $teams) {
     if (empty($teams)) {
         echo '<p class="no-results">No teams to rank yet.</p>';
@@ -12,7 +36,7 @@ function renderRanking(array $teams) {
 
     $topThree = array_slice($teams, 0, 3);
     $rest = array_slice($teams, 3);
-    $maxScore = $topThree[0]['score'];
+    $maxScore = $topThree[0]['score'] ?? 1;
 
     // Prepare correct order for display: 2nd, 1st, 3rd
     $visualOrder = [];
@@ -52,4 +76,3 @@ function renderRanking(array $teams) {
         echo '</ul>';
     }
 }
-?>
