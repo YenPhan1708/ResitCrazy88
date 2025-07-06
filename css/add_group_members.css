@@ -67,3 +67,19 @@
     padding-left: 0;
     margin: 0;
 }
+.next-button {
+    background-color: #00c6b3;
+    color: white;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+    background-color: #003070;
+}
+

@@ -14,7 +14,7 @@ $teamScores = getActualTeamScores('../json/data.json');
 <div class="container">
     <aside class="sidebar">
         <img src="../img/nhlStendenLogo.png" alt="NHL Stenden Logo" class="logo"/>
-        <button class="finish-button">Finish Form</button>
+        <button class="finish-button" onclick="window.location.href='add_group.php'">New Form</button>
     </aside>
 
     <main class="main-content">

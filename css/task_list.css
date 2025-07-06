@@ -1,29 +1,83 @@
-.task-grid {
+/* Task Selection Dropdown */
+.group-select-form {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
-    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
-.task-form {
-    margin: 0;
+.group-select-form label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
 }
 
+.group-select-form select {
+    padding: 10px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    min-width: 250px;
+}
+
+/* Container for all tasks */
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Task buttons */
 .task-button {
-    padding: 10px;
-    width: 240px;
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 500;
     border: none;
-    border-radius: 6px;
-    font-size: 14px;
+    border-radius: 10px;
+    text-align: left;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
-.task-button.completed {
-    background-color: #b6b608;
+.task-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-.task-button.not-completed {
-    background-color: green;
+/* Completed task style */
+.completed {
+    background-color: #003070;
     color: white;
+}
+
+/* Not completed styles alternate */
+.not-completed:nth-child(odd) {
+    background-color: #00c6b3; /* Dark green */
+    color: white;
+}
+
+.not-completed:nth-child(even) {
+    background-color: #fbc02d; /* Vivid yellow */
+    color: #111;
+}
+
+/* Optional: Add a checkmark to completed tasks */
+.task-button.completed::before {
+    content: "✔ ";
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+/* Optional: Better spacing inside form-box */
+.form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
 }

@@ -25,7 +25,7 @@ if ($selectedGroup) {
 <div class="container">
     <div class="sidebar">
         <img src="../img/nhlStendenLogo.png" alt="Logo" class="logo">
-        <button class="finish-button" onclick="window.location.href='leaderboard.php'">Finish Form</button>
+        <button class="finish-button" onclick="window.location.href='leaderboard.php'">Leader Board</button>
     </div>
 
     <div class="main-content">
@@ -73,6 +73,11 @@ if ($selectedGroup) {
                     <input type="text" name="member_name" id="member_name" required>
 
                     <button type="submit" class="submit-button">Add Member</button>
+                </form>
+                <!-- Next Button to go to Task Completion -->
+                <form method="GET" action="mark_task_completion.php" style="margin-top: 16px;">
+                    <input type="hidden" name="group" value="<?= htmlspecialchars($selectedGroup) ?>">
+                    <button type="submit" class="next-button">Next</button>
                 </form>
             <?php endif; ?>
         </div>

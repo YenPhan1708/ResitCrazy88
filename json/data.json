@@ -13,6 +13,39 @@
                 8
             ],
             "score": 57
+        },
+        {
+            "name": "Group A",
+            "members": [
+                "Yen Phan",
+                "Yaro"
+            ],
+            "tasksCompleted": [
+                8,
+                6,
+                3
+            ],
+            "score": 28
+        },
+        {
+            "name": "Group C",
+            "members": [
+                "Yen"
+            ],
+            "tasksCompleted": []
+        },
+        {
+            "name": "Group D",
+            "members": [
+                "Yen Yen"
+            ],
+            "tasksCompleted": [
+                3,
+                5,
+                6,
+                39
+            ],
+            "score": 40
         }
     ]
 }

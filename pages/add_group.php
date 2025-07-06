@@ -12,7 +12,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <img src="../img/nhlStendenLogo.png" alt="NHL Stenden Logo" class="logo">
-        <button class="finish-button">Finish Form</button>
+        <button class="finish-button" onclick="window.location.href='leaderboard.php'">Leader Board</button>
     </div>
 
     <!-- Main Content -->

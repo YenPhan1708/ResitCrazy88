@@ -31,7 +31,7 @@ foreach ($data['groups'] as $group) {
 <div class="container">
     <div class="sidebar">
         <img src="../img/nhlStendenLogo.png" alt="Logo" class="logo">
-        <button class="finish-button" onclick="window.location.href='leaderboard.php'">Finish Form</button>
+        <button class="finish-button" onclick="window.location.href='leaderboard.php'">Leader Board</button>
     </div>
 
     <div class="main-content">
@@ -44,37 +44,38 @@ foreach ($data['groups'] as $group) {
         </div>
 
         <div class="form-box">
-            <form method="GET" class="group-select-form">
-                <label for="group">Select Group</label>
-                <select name="group" id="group" onchange="this.form.submit()" required>
-                    <option value="" disabled <?= $selectedGroup === '' ? 'selected' : '' ?>>== Please Select Group ==</option>
-                    <?php foreach ($groupNames as $name): ?>
-                        <option value="<?= htmlspecialchars($name) ?>" <?= $selectedGroup === $name ? 'selected' : '' ?>>
-                            <?= htmlspecialchars($name) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </form>
+    <form method="GET" class="group-select-form">
+        <label for="group">Select Group</label>
+        <select name="group" id="group" onchange="this.form.submit()" required>
+            <option value="" disabled <?= $selectedGroup === '' ? 'selected' : '' ?>>== Please Select Group ==</option>
+            <?php foreach ($groupNames as $name): ?>
+                <option value="<?= htmlspecialchars($name) ?>" <?= $selectedGroup === $name ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($name) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </form>
 
-            <?php if ($selectedGroup): ?>
-                <div class="task-list">
-                    <?php foreach ($tasks as $index => $task): ?>
-                        <?php
-                        $taskId = $index + 1; // 1-based ID
-                        $isCompleted = in_array($taskId, $completedTasks);
-                        $statusClass = $isCompleted ? 'completed' : 'not-completed';
-                        ?>
-                        <form method="POST" action="../scripts/mark_task.php">
-                            <input type="hidden" name="group" value="<?= htmlspecialchars($selectedGroup) ?>">
-                            <input type="hidden" name="task_id" value="<?= $taskId ?>">
-                            <button type="submit" class="task-button <?= $statusClass ?>">
-                                <?= htmlspecialchars($task['task_name']) ?> (<?= $task['points'] ?> pts)
-                            </button>
-                        </form>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
+    <?php if ($selectedGroup): ?>
+        <div class="task-list">
+            <?php foreach ($tasks as $index => $task): ?>
+                <?php
+                $taskId = $index + 1;
+                $isCompleted = in_array($taskId, $completedTasks);
+                $statusClass = $isCompleted ? 'completed' : 'not-completed';
+                ?>
+                <form method="POST" action="../scripts/mark_task.php">
+                    <input type="hidden" name="group" value="<?= htmlspecialchars($selectedGroup) ?>">
+                    <input type="hidden" name="task_id" value="<?= $taskId ?>">
+                    <button type="submit" class="task-button <?= $statusClass ?>">
+                        <?= htmlspecialchars($task['task_name']) ?> (<?= $task['points'] ?> pts)
+                    </button>
+                </form>
+            <?php endforeach; ?>
         </div>
+    <?php endif; ?>
+</div>
+
     </div>
 </div>
 </body>
