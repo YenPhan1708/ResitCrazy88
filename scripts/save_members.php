@@ -1,27 +1,27 @@
 <?php
-session_start();
-
 $groupName = $_POST['group'] ?? null;
-$selectedMembers = $_POST['members'] ?? [];
+$memberName = $_POST['member_name'] ?? null;
 
-if (!$groupName) {
-    die("Group name not provided.");
+if (!$groupName || !$memberName) {
+    die("Missing group or member name.");
 }
 
-// Load current data
 $dataPath = '../json/data.json';
 $data = json_decode(file_get_contents($dataPath), true);
 
-// Find the correct group and update its members
+// Find group
 foreach ($data['groups'] as &$group) {
     if ($group['name'] === $groupName) {
-        $group['members'] = $selectedMembers;
+        if (!in_array($memberName, $group['members'])) {
+            $group['members'][] = $memberName;
+        }
         break;
     }
 }
+unset($group);
 
 file_put_contents($dataPath, json_encode($data, JSON_PRETTY_PRINT));
 
-// Redirect back or forward
-header('Location: ../pages/add_group_member.php');
+// Redirect back
+header("Location: ../pages/add_group_member.php");
 exit;

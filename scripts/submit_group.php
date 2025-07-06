@@ -1,36 +1,41 @@
 <?php
-session_start();
 
-$group = $_POST['group'] ?? null;
+// Get submitted group name
+$groupName = $_POST['group_name'] ?? null;
 
-if (!$group) {
-    die("No group selected.");
+// Validate input
+if (!$groupName || trim($groupName) === '') {
+    die("Please provide a group name.");
 }
 
-// Load current data
+// Load existing data
 $dataPath = '../json/data.json';
-$data = json_decode(file_get_contents($dataPath), true);
+if (!file_exists($dataPath)) {
+    // Initialize file if it doesn't exist
+    $data = ['groups' => []];
+} else {
+    $data = json_decode(file_get_contents($dataPath), true);
+}
 
-// Check if group already exists, if not add it
-$groupExists = false;
-foreach ($data['groups'] as $existingGroup) {
-    if ($existingGroup['name'] === $group) {
-        $groupExists = true;
+// Check for duplicate group
+$exists = false;
+foreach ($data['groups'] as $group) {
+    if (strcasecmp($group['name'], $groupName) === 0) {
+        $exists = true;
         break;
     }
 }
 
-if (!$groupExists) {
+// Add new group if it doesn't already exist
+if (!$exists) {
     $data['groups'][] = [
-        'name' => $group,
+        'name' => $groupName,
         'members' => [],
         'tasksCompleted' => []
     ];
     file_put_contents($dataPath, json_encode($data, JSON_PRETTY_PRINT));
 }
 
-// ✅ Store group in session for later pages
-$_SESSION['selected_group'] = $group;
-
-header('Location: ../pages/add_group.php');
+// Redirect to the add group members page
+header('Location: ../pages/add_group_member.php');
 exit;
