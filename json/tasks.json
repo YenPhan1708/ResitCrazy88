@@ -1,356 +1,44 @@
 {
-  "tasks": [
-    {
-      "task_name": "Visit the Reptile House (Challenge #1)",
-      "points": 10
-    },
-    {
-      "task_name": "Take a picture of a lion (Challenge #2)",
-      "points": 15
-    },
-    {
-      "task_name": "Attend a zookeeper talk (Challenge #3)",
-      "points": 8
-    },
-    {
-      "task_name": "Find and photograph a peacock (Challenge #4)",
-      "points": 12
-    },
-    {
-      "task_name": "Count the number of giraffes (Challenge #5)",
-      "points": 10
-    },
-    {
-      "task_name": "Locate the penguin pool (Challenge #6)",
-      "points": 9
-    },
-    {
-      "task_name": "Take a selfie with the elephant statue (Challenge #7)",
-      "points": 14
-    },
-    {
-      "task_name": "Identify 3 types of monkeys (Challenge #8)",
-      "points": 11
-    },
-    {
-      "task_name": "Watch the sea lion show (Challenge #9)",
-      "points": 13
-    },
-    {
-      "task_name": "Find the zoo map and mark your path (Challenge #10)",
-      "points": 7
-    },
-    {
-      "task_name": "Visit the Reptile House (Challenge #11)",
-      "points": 10
-    },
-    {
-      "task_name": "Take a picture of a lion (Challenge #12)",
-      "points": 15
-    },
-    {
-      "task_name": "Attend a zookeeper talk (Challenge #13)",
-      "points": 8
-    },
-    {
-      "task_name": "Find and photograph a peacock (Challenge #14)",
-      "points": 12
-    },
-    {
-      "task_name": "Count the number of giraffes (Challenge #15)",
-      "points": 10
-    },
-    {
-      "task_name": "Locate the penguin pool (Challenge #16)",
-      "points": 9
-    },
-    {
-      "task_name": "Take a selfie with the elephant statue (Challenge #17)",
-      "points": 14
-    },
-    {
-      "task_name": "Identify 3 types of monkeys (Challenge #18)",
-      "points": 11
-    },
-    {
-      "task_name": "Watch the sea lion show (Challenge #19)",
-      "points": 13
-    },
-    {
-      "task_name": "Find the zoo map and mark your path (Challenge #20)",
-      "points": 7
-    },
-    {
-      "task_name": "Visit the Reptile House (Challenge #21)",
-      "points": 10
-    },
-    {
-      "task_name": "Take a picture of a lion (Challenge #22)",
-      "points": 15
-    },
-    {
-      "task_name": "Attend a zookeeper talk (Challenge #23)",
-      "points": 8
-    },
-    {
-      "task_name": "Find and photograph a peacock (Challenge #24)",
-      "points": 12
-    },
-    {
-      "task_name": "Count the number of giraffes (Challenge #25)",
-      "points": 10
-    },
-    {
-      "task_name": "Locate the penguin pool (Challenge #26)",
-      "points": 9
-    },
-    {
-      "task_name": "Take a selfie with the elephant statue (Challenge #27)",
-      "points": 14
-    },
-    {
-      "task_name": "Identify 3 types of monkeys (Challenge #28)",
-      "points": 11
-    },
-    {
-      "task_name": "Watch the sea lion show (Challenge #29)",
-      "points": 13
-    },
-    {
-      "task_name": "Find the zoo map and mark your path (Challenge #30)",
-      "points": 7
-    },
-    {
-      "task_name": "Visit the Reptile House (Challenge #31)",
-      "points": 10
-    },
-    {
-      "task_name": "Take a picture of a lion (Challenge #32)",
-      "points": 15
-    },
-    {
-      "task_name": "Attend a zookeeper talk (Challenge #33)",
-      "points": 8
-    },
-    {
-      "task_name": "Find and photograph a peacock (Challenge #34)",
-      "points": 12
-    },
-    {
-      "task_name": "Count the number of giraffes (Challenge #35)",
-      "points": 10
-    },
-    {
-      "task_name": "Locate the penguin pool (Challenge #36)",
-      "points": 9
-    },
-    {
-      "task_name": "Take a selfie with the elephant statue (Challenge #37)",
-      "points": 14
-    },
-    {
-      "task_name": "Identify 3 types of monkeys (Challenge #38)",
-      "points": 11
-    },
-    {
-      "task_name": "Watch the sea lion show (Challenge #39)",
-      "points": 13
-    },
-    {
-      "task_name": "Find the zoo map and mark your path (Challenge #40)",
-      "points": 7
-    },
-    {
-      "task_name": "Visit the Reptile House (Challenge #41)",
-      "points": 10
-    },
-    {
-      "task_name": "Take a picture of a lion (Challenge #42)",
-      "points": 15
-    },
-    {
-      "task_name": "Attend a zookeeper talk (Challenge #43)",
-      "points": 8
-    },
-    {
-      "task_name": "Find and photograph a peacock (Challenge #44)",
-      "points": 12
-    },
-    {
-      "task_name": "Count the number of giraffes (Challenge #45)",
-      "points": 10
-    },
-    {
-      "task_name": "Locate the penguin pool (Challenge #46)",
-      "points": 9
-    },
-    {
-      "task_name": "Take a selfie with the elephant statue (Challenge #47)",
-      "points": 14
-    },
-    {
-      "task_name": "Identify 3 types of monkeys (Challenge #48)",
-      "points": 11
-    },
-    {
-      "task_name": "Watch the sea lion show (Challenge #49)",
-      "points": 13
-    },
-    {
-      "task_name": "Find the zoo map and mark your path (Challenge #50)",
-      "points": 7
-    },
-    {
-      "task_name": "Visit the Reptile House (Challenge #51)",
-      "points": 10
-    },
-    {
-      "task_name": "Take a picture of a lion (Challenge #52)",
-      "points": 15
-    },
-    {
-      "task_name": "Attend a zookeeper talk (Challenge #53)",
-      "points": 8
-    },
-    {
-      "task_name": "Find and photograph a peacock (Challenge #54)",
-      "points": 12
-    },
-    {
-      "task_name": "Count the number of giraffes (Challenge #55)",
-      "points": 10
-    },
-    {
-      "task_name": "Locate the penguin pool (Challenge #56)",
-      "points": 9
-    },
-    {
-      "task_name": "Take a selfie with the elephant statue (Challenge #57)",
-      "points": 14
-    },
-    {
-      "task_name": "Identify 3 types of monkeys (Challenge #58)",
-      "points": 11
-    },
-    {
-      "task_name": "Watch the sea lion show (Challenge #59)",
-      "points": 13
-    },
-    {
-      "task_name": "Find the zoo map and mark your path (Challenge #60)",
-      "points": 7
-    },
-    {
-      "task_name": "Visit the Reptile House (Challenge #61)",
-      "points": 10
-    },
-    {
-      "task_name": "Take a picture of a lion (Challenge #62)",
-      "points": 15
-    },
-    {
-      "task_name": "Attend a zookeeper talk (Challenge #63)",
-      "points": 8
-    },
-    {
-      "task_name": "Find and photograph a peacock (Challenge #64)",
-      "points": 12
-    },
-    {
-      "task_name": "Count the number of giraffes (Challenge #65)",
-      "points": 10
-    },
-    {
-      "task_name": "Locate the penguin pool (Challenge #66)",
-      "points": 9
-    },
-    {
-      "task_name": "Take a selfie with the elephant statue (Challenge #67)",
-      "points": 14
-    },
-    {
-      "task_name": "Identify 3 types of monkeys (Challenge #68)",
-      "points": 11
-    },
-    {
-      "task_name": "Watch the sea lion show (Challenge #69)",
-      "points": 13
-    },
-    {
-      "task_name": "Find the zoo map and mark your path (Challenge #70)",
-      "points": 7
-    },
-    {
-      "task_name": "Visit the Reptile House (Challenge #71)",
-      "points": 10
-    },
-    {
-      "task_name": "Take a picture of a lion (Challenge #72)",
-      "points": 15
-    },
-    {
-      "task_name": "Attend a zookeeper talk (Challenge #73)",
-      "points": 8
-    },
-    {
-      "task_name": "Find and photograph a peacock (Challenge #74)",
-      "points": 12
-    },
-    {
-      "task_name": "Count the number of giraffes (Challenge #75)",
-      "points": 10
-    },
-    {
-      "task_name": "Locate the penguin pool (Challenge #76)",
-      "points": 9
-    },
-    {
-      "task_name": "Take a selfie with the elephant statue (Challenge #77)",
-      "points": 14
-    },
-    {
-      "task_name": "Identify 3 types of monkeys (Challenge #78)",
-      "points": 11
-    },
-    {
-      "task_name": "Watch the sea lion show (Challenge #79)",
-      "points": 13
-    },
-    {
-      "task_name": "Find the zoo map and mark your path (Challenge #80)",
-      "points": 7
-    },
-    {
-      "task_name": "Visit the Reptile House (Challenge #81)",
-      "points": 10
-    },
-    {
-      "task_name": "Take a picture of a lion (Challenge #82)",
-      "points": 15
-    },
-    {
-      "task_name": "Attend a zookeeper talk (Challenge #83)",
-      "points": 8
-    },
-    {
-      "task_name": "Find and photograph a peacock (Challenge #84)",
-      "points": 12
-    },
-    {
-      "task_name": "Count the number of giraffes (Challenge #85)",
-      "points": 10
-    },
-    {
-      "task_name": "Locate the penguin pool (Challenge #86)",
-      "points": 9
-    },
-    {
-      "task_name": "Take a selfie with the elephant statue (Challenge #87)",
-      "points": 14
-    },
-    {
-      "task_name": "Identify 3 types of monkeys (Challenge #88)",
-      "points": 11
-    }
-  ]
+    "tasks": [
+        {
+            "task_name": "Find Room A101",
+            "points": 5
+        },
+        {
+            "task_name": "Take a picture with a lecturer",
+            "points": 15
+        },
+        {
+            "task_name": "Visit the cafeteria",
+            "points": 10
+        },
+        {
+            "task_name": "Post on the class group chat",
+            "points": 20
+        },
+        {
+            "task_name": "Check in at the library desk",
+            "points": 25
+        },
+        {
+            "task_name": "Find the library",
+            "points": 10
+        },
+        {
+            "task_name": "Take a group photo at cafeteria",
+            "points": 20
+        },
+        {
+            "task_name": "Locate the student services desk",
+            "points": 15
+        },
+        {
+            "task_name": "Answer a quiz in room B203",
+            "points": 25
+        },
+        {
+            "task_name": "Talk to a second-year student",
+            "points": 10
+        }
+    ]
 }
