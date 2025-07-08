@@ -29,6 +29,20 @@ function renderRanking(array $teams) {
         return;
     }
 
+    // Check if all scores are zero
+    $allZero = true;
+    foreach ($teams as $team) {
+        if ($team['score'] > 0) {
+            $allZero = false;
+            break;
+        }
+    }
+
+    if ($allZero) {
+        echo '<p class="no-results">No tasks completed yet.</p>';
+        return;
+    }
+
     // Sort by descending score
     usort($teams, function ($a, $b) {
         return $b['score'] <=> $a['score'];
@@ -47,7 +61,7 @@ function renderRanking(array $teams) {
     echo '<div class="top-three">';
     foreach ($visualOrder as $item) {
         $player = $item['team'];
-        $heightPercent = round(($player['score'] / $maxScore) * 100);
+        $heightPercent = $maxScore > 0 ? round(($player['score'] / $maxScore) * 100) : 0;
 
         echo '
         <div class="position ' . $item['class'] . '">

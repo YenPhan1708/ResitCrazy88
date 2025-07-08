@@ -25,7 +25,11 @@ if ($selectedGroup) {
 <div class="container">
     <div class="sidebar">
         <img src="../img/nhlStendenLogo.png" alt="Logo" class="logo">
-        <button class="finish-button" onclick="window.location.href='leaderboard.php'">Leader Board</button>
+        <nav class="nav-links">
+                <a href="leaderboard.php">Leader Board</a>
+                <a href="add_group.php">Add Group</a>
+                <a href="mark_task_completion.php">Task Checklist</a>
+        </nav>
     </div>
 
     <div class="main-content">

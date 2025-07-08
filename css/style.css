@@ -38,15 +38,6 @@ body {
     width: 100px;
 }
 
-.finish-button {
-    background-color: #0ac3b9;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-}
 
 .main-content {
     flex-grow: 1;
@@ -212,4 +203,31 @@ body {
 }
 .task-label {
     font-weight: normal;
+}
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: block;
+    background-color: #0ac3b9;
+
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    background-color: #9cdad6;  /* your highlight color from .finish-button */
+    color: #004990;             /* dark blue text on highlight */
+    outline: none;
 }

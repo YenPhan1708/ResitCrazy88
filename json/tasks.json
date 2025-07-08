@@ -19,26 +19,6 @@
         {
             "task_name": "Check in at the library desk",
             "points": 25
-        },
-        {
-            "task_name": "Find the library",
-            "points": 10
-        },
-        {
-            "task_name": "Take a group photo at cafeteria",
-            "points": 20
-        },
-        {
-            "task_name": "Locate the student services desk",
-            "points": 15
-        },
-        {
-            "task_name": "Answer a quiz in room B203",
-            "points": 25
-        },
-        {
-            "task_name": "Talk to a second-year student",
-            "points": 10
         }
     ]
 }

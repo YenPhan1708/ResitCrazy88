@@ -31,7 +31,11 @@ foreach ($data['groups'] as $group) {
 <div class="container">
     <div class="sidebar">
         <img src="../img/nhlStendenLogo.png" alt="Logo" class="logo">
-        <button class="finish-button" onclick="window.location.href='leaderboard.php'">Leader Board</button>
+    <nav class="nav-links">
+            <a href="leaderboard.php">Leader Board</a>
+            <a href="add_group.php">Add Group</a>
+            <a href="add_group_member.php">Add Members</a>
+    </nav>
     </div>
 
     <div class="main-content">
@@ -79,7 +83,9 @@ foreach ($data['groups'] as $group) {
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
-
+    <form method="POST" action="../scripts/reset_data.php" onsubmit="return confirm('Are you sure you want to reset all data?');">
+         <button type="submit" class="reset-button">Reset All</button>
+    </form>
 </div>
 
     </div>
