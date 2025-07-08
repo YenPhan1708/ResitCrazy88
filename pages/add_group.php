@@ -33,11 +33,22 @@
         <div class="center-wrapper">
             <form action="../scripts/submit_group.php" method="POST" class="add-group-form">
                 <label for="group_name">Group Name</label>
-                <input type="text" name="group_name" id="group_name" required>
+                <input type="text" name="group_name" id="group_name" maxlength="25" required oninput="checkLength(this, 25, 'group-warning')">
+                <p id="group-warning" class="warning-message" style="display: none; color: red; font-size: 0.9rem;">Group name can't exceed 25 characters.</p>
                 <button type="submit">Add Group</button>
             </form>
         </div>
     </div>
 </div>
+<script>
+function checkLength(input, max, warningId) {
+    const warning = document.getElementById(warningId);
+    if (input.value.length >= max) {
+        warning.style.display = 'block';
+    } else {
+        warning.style.display = 'none';
+    }
+}
+</script>
 </body>
 </html>

@@ -74,7 +74,8 @@ if ($selectedGroup) {
                     <input type="hidden" name="group" value="<?= htmlspecialchars($selectedGroup) ?>">
 
                     <label for="member_name">New Member Name</label>
-                    <input type="text" name="member_name" id="member_name" required>
+                    <input type="text" name="member_name" id="member_name" maxlength="30" required oninput="checkLength(this, 30, 'member-warning')">
+                    <p id="member-warning" class="warning-message" style="display: none; color: red; font-size: 0.9rem;">Member name can't exceed 30 characters.</p>
 
                     <button type="submit" class="submit-button">Add Member</button>
                 </form>
@@ -87,5 +88,15 @@ if ($selectedGroup) {
         </div>
     </div>
 </div>
+<script>
+function checkLength(input, max, warningId) {
+    const warning = document.getElementById(warningId);
+    if (input.value.length >= max) {
+        warning.style.display = 'block';
+    } else {
+        warning.style.display = 'none';
+    }
+}
+</script>
 </body>
 </html>
