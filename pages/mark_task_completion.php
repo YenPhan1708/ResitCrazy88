@@ -74,6 +74,12 @@ foreach ($data['groups'] as $group) {
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
+    <form action="import_csv.php" method="POST" enctype="multipart/form-data" style="margin-top: 16px;">
+        <label for="csv_file">Import Tasks (CSV)</label>
+        <input type="file" name="csv_file" id="csv_file" accept=".csv" required>
+        <button type="submit">Upload</button>
+    </form>
+
 </div>
 
     </div>

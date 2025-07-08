@@ -65,14 +65,26 @@ function renderRanking(array $teams) {
     }
     echo '</div>';
 
-    if (!empty($rest)) {
+        if (!empty($rest)) {
         echo '<ul class="ranking-list">';
         $rank = 4;
-        foreach ($rest as $team) {
-            echo '<li><span class="rank">' . $rank++ . '.</span> '
+        $prevScore = null;
+        $realRank = $rank;
+
+        foreach ($rest as $i => $team) {
+            if ($prevScore !== null && $team['score'] < $prevScore) {
+                $realRank = $rank;
+            }
+
+            echo '<li><span class="rank">' . $realRank . '.</span> '
                 . '<span class="team-name">' . htmlspecialchars($team['team']) . '</span>'
                 . '<span class="points">' . intval($team['score']) . ' Pts</span></li>';
+
+            $prevScore = $team['score'];
+            $rank++;
         }
+
         echo '</ul>';
     }
+
 }
