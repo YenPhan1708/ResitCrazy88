@@ -3,7 +3,17 @@
         {
             "name": "Group A",
             "members": [
-                "Yen Phan"
+                "Yen Phan",
+                "Yaro"
+            ],
+            "tasksCompleted": []
+        },
+        {
+            "name": "Group C",
+            "members": [
+                "Yen Phan",
+                "Yaro",
+                "New Member"
             ],
             "tasksCompleted": []
         }

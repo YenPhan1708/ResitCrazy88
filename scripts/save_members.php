@@ -23,5 +23,5 @@ unset($group);
 file_put_contents($dataPath, json_encode($data, JSON_PRETTY_PRINT));
 
 // Redirect back
-header("Location: ../pages/add_group_member.php");
+header("Location: ../pages/add_group_member.php?group=" . urlencode($groupName));
 exit;
